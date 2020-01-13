@@ -1,0 +1,17 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="eng">
+  <head>
+    <link
+      rel="shortcut icon"
+      href="{% static 'content_recipes/favicon.png' %}"
+    />
+    <link rel="stylesheet" type="text/css" href="{% static 'content_recipes/style.css' %}">
+    <title>{% block title %} {% endblock title %}</title>
+  </head>
+
+  <body>
+    {% block content %}{% endblock content%}
+  </body>
+</html>

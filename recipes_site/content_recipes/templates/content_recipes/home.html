@@ -1,9 +1,10 @@
-{% if latest_recipes %}
-    <ul>
-    {% for recipe in latest_recipes %}
-        <li><a href="{% url 'detail' recipe.id %}">{{ recipe.title }}</a></li>
-    {% endfor %}
-    </ul>
+{% extends "content_recipes/layout.html" %} {% block title %} Home of recipes !
+{% endblock title %} {% block content %} {% if latest_recipes %}
+<ul>
+  {% for recipe in latest_recipes %}
+  <li><a href="{% url 'detail' recipe.id %}">{{ recipe.title }}</a></li>
+  {% endfor %}
+</ul>
 {% else %}
-    <p>No recipes available yet.</p>
-{% endif %}
+<p>No recipes available yet.</p>
+{% endif %} {% endblock %}

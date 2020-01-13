@@ -1,9 +1,16 @@
+{% extends "content_recipes/layout.html" %} {% block title %} {{ recipe.title }}
+{% endblock title %} {% block content %}
+
 <h1>{{ recipe.title }}</h1>
 
 <ul>
-    <li>{{ recipe.ingredients }}</li>
+  <li>{{ recipe.ingredients }}</li>
+</ul>
+
+<ul>
+  <li>{{ recipe.directions }}</li>
 </ul>
 
 <a href="{% url 'home' %}">home</a>
 
-<small>{{ recipe.pub_date }} </small>
+<small>{{ recipe.pub_date }} </small>{% endblock content %}
