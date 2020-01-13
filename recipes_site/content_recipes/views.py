@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
-from .models import Recipe
+from .models import Recipe, Ingredient, Direction
 
 
 def home(request):
@@ -11,4 +11,6 @@ def home(request):
 
 def detail(request, recipe_id):
     recipe = get_object_or_404(Recipe, pk=recipe_id)
-    return render(request, "content_recipes/detail.html", {"recipe": recipe})
+    ingredients = Ingredient.objects.filter(recipe__id=recipe_id)
+    directions = Direction.objects.filter(recipe__id=recipe_id)
+    return render(request, "content_recipes/detail.html", {"recipe": recipe, "ingredients": ingredients, "directions": directions})
