@@ -1,7 +1,9 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse
 from .models import Recipe, Ingredient, Direction
 
+def index(request):
+    return redirect("home")
 
 def home(request):
     latest_recipes = Recipe.objects.order_by('-pub_date')[:4]

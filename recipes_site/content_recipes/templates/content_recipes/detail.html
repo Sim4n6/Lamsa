@@ -1,9 +1,11 @@
-{% extends "content_recipes/layout.html" %} {% block title %} {{ recipe.title }}
+{% extends "content_recipes/index.html" %} {% block title %} {{ recipe.title }}
 {% endblock title %} {% block content %}
 
 <h1>{{ recipe.title }}</h1>
 
 {{ recipe.description }}
+
+<img src="{{ recipe.photo.url }}" />
 
 {% if ingredients %}
 <h5>Ingredients : </h5>
