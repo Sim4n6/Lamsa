@@ -1,30 +1,30 @@
 {% extends "content_recipes/index.html" %} {% block title %} {{ recipe.title }}
 {% endblock title %} {% block content %}
+<div class="container">
+  <div class="section">
+    <h1>{{ recipe.title }}</h1>
 
-<h1>{{ recipe.title }}</h1>
+    {{ recipe.description }}
 
-{{ recipe.description }}
+    <img src="{{ recipe.photo.url }}" />
 
-<img src="{{ recipe.photo.url }}" />
+    {% if ingredients %}
+    <h5>Ingredients :</h5>
+    <ul>
+      {% for ingredient in ingredients %}
+      <li>{{ ingredient }}</li>
+      {% endfor %}
+    </ul>
+    {% endif %} {% if directions %}
+    <h5>Directions :</h5>
+    <ul>
+      {% for direction in directions %}
+      <li>{{ direction }}</li>
+      {% endfor %}
+    </ul>
+    {% endif %}
+    <small>{{ recipe.pub_date }} </small>
+  </div>
+</div>
 
-{% if ingredients %}
-<h5>Ingredients : </h5>
-<ul>
-  {% for ingredient in ingredients %}
-    <li>{{ ingredient }}</li>
-  {% endfor %}
-</ul>
-{% endif %}
-
-{% if directions %}
-<h5>Directions : </h5>
-<ul>
-  {% for direction in directions %}
-    <li>{{ direction }}</li>
-  {% endfor %}
-</ul>
-{% endif %}
-
-<a href="{% url 'home' %}">home</a>
-
-<small>{{ recipe.pub_date }} </small>{% endblock content %}
+{% endblock content %}
