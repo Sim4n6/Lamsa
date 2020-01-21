@@ -8,7 +8,7 @@ def index(request):
 def home(request):
     latest_recipes = Recipe.objects.order_by('-pub_date')[:4]
     context = {'latest_recipes': latest_recipes}
-    return render(request, 'content_recipes/home.html', context)
+    return render(request, 'recipe_app/home.html', context)
 
 
 def detail(request, recipe_id):
@@ -17,4 +17,4 @@ def detail(request, recipe_id):
     directions = Direction.objects.filter(recipe__id=recipe_id)
     latest_recipes = Recipe.objects.order_by('-pub_date')[:4]
     context = {"recipe": recipe, "ingredients": ingredients, "directions": directions, "latest_recipes": latest_recipes}
-    return render(request, "content_recipes/detail.html", context)
+    return render(request, "recipe_app/detail.html", context)

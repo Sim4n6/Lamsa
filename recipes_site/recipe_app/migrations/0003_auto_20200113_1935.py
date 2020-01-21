@@ -7,7 +7,7 @@ import django.db.models.deletion
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('content_recipes', '0002_auto_20200113_1846'),
+        ('recipe_app', '0002_auto_20200113_1846'),
     ]
 
     operations = [
@@ -24,7 +24,7 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('ingredient', models.CharField(max_length=200)),
-                ('recipe', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='content_recipes.Recipe')),
+                ('recipe', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='recipe_app.Recipe')),
             ],
         ),
         migrations.CreateModel(
@@ -32,7 +32,7 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('direction', models.CharField(max_length=200)),
-                ('recipe', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='content_recipes.Recipe')),
+                ('recipe', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='recipe_app.Recipe')),
             ],
         ),
     ]

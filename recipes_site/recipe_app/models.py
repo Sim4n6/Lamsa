@@ -10,15 +10,15 @@ class Recipe(models.Model):
         return self.title
 
 class Ingredient(models.Model):
-    ingredient =  models.CharField(max_length=200)
     recipe = models.ForeignKey("Recipe", on_delete=models.CASCADE)
+    ingredient =  models.TextField()
 
     def __str__(self):
         return self.ingredient
 
 class Direction(models.Model):
-    direction =  models.CharField(max_length=200)
     recipe = models.ForeignKey("Recipe", on_delete=models.CASCADE)
+    direction =  models.TextField()
 
     def __str__(self):
         return self.direction
