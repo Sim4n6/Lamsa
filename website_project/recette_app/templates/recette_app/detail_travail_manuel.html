@@ -1,0 +1,30 @@
+{% extends "index.html" %} {% block title %} {{ recipe.title }}
+{% endblock title %} {% block content %}
+<div class="container">
+  <div class="section">
+    <h1>{{ travail_manuel.title }}</h1>
+
+    {{ travail_manuel.description }}
+
+    <img src="{{travail_manuel.photo.url }}" />
+
+    {% if materiel %}
+    <h5>Ingredients :</h5>
+    <ul>
+      {% for mat in materiel %}
+      <li>{{ mat }}</li>
+      {% endfor %}
+    </ul>
+    {% endif %} {% if methode %}
+    <h5>Directions :</h5>
+    <ul>
+      {% for met in methode %}
+      <li>{{ met }}</li>
+      {% endfor %}
+    </ul>
+    {% endif %}
+    <small>{{ travail_manuel.pub_date }} </small>
+  </div>
+</div>
+
+{% endblock content %}
