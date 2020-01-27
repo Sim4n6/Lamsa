@@ -1,0 +1,48 @@
+{% extends "index.html" %} {% block title %} Home of recipes !
+{% endblock title %} 
+
+
+
+{% block content %} 
+
+<div class="section no-pad-bot" id="index-banner">
+  <div class="container">
+    <h1 class="header center grey-text">لمسة للفن و الأشغال اليدوية</h1>
+    <h3 class="header center blue-text">LAMSA Association</h3>
+    <div class="row center">
+      <h5 class="header col s12 light">A modern responsive front-end framework based on Material Design</h5>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="section">
+
+    <!--   Icon Section   -->
+    <div class="row">
+      <h5 class="left header blue-text">Dernieres activités :</h5>
+    </div>
+    <div class="row">
+      {% if activites %}
+      
+      {% for activite in activites %}
+      <div class="col s12 m4">
+        <div class="icon-block">
+          <h2 class="center light-blue-text"><i class="material-icons">brush</i></h2>
+          <h5 class="center"><a href="{% url 'detail_activite' activite.id %}">{{ activite.title }}</a></h5>
+
+          <p class="light">{{ activite.description }}.</p>
+        </div>
+      </div>
+      {% endfor %}
+
+    {% else %}
+      <p>No activité available yet.</p>
+    {% endif %}
+
+    </div>
+  </div>
+  <br><br>
+</div>
+
+ {% endblock %}

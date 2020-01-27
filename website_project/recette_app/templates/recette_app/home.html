@@ -20,6 +20,10 @@
 
     <!--   Icon Section   -->
     <div class="row">
+      <h5 class="left header blue-text">Dernieres recettes :</h5>
+    </div>
+
+    <div class="row">
       {% if latest_recipes %}
       
         {% for recipe in latest_recipes %}
@@ -39,7 +43,9 @@
     </div>
 
     <div class="row">
-
+      <h5 class="left header blue-text">Derniers travaux manuels :</h5>
+    </div>
+    <div class="row">
       {% if latest_travail_manuel %}
       
       {% for travail_manuel in latest_travail_manuel %}
@@ -59,6 +65,28 @@
 
     </div>
 
+    <div class="row">
+      <h5 class="left header blue-text">Dernieres activités :</h5>
+    </div>
+    <div class="row">
+      {% if latest_activite %}
+      
+      {% for activite in latest_activite %}
+      <div class="col s12 m4">
+        <div class="icon-block">
+          <h2 class="center light-blue-text"><i class="material-icons">brush</i></h2>
+          <h5 class="center"><a href="{% url 'detail_activite' activite.id %}">{{ activite.title }}</a></h5>
+
+          <p class="light">{{ activite.description }}.</p>
+        </div>
+      </div>
+      {% endfor %}
+
+    {% else %}
+      <p>No activité available yet.</p>
+    {% endif %}
+
+    </div>
   </div>
   <br><br>
 </div>

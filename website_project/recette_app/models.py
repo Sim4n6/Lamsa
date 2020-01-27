@@ -23,3 +23,13 @@ class Travail_manuel(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class Activite(models.Model):
+    title = models.CharField("Titre",max_length=200)
+    description = models.TextField("Description")
+    photo = models.ImageField("Photos", upload_to="")
+    pub_date = models.DateField("Date published", default=timezone.now)
+
+    def __str__(self):
+        return self.title

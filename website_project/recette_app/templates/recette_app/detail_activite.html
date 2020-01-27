@@ -1,0 +1,19 @@
+{% extends "index.html" %} {% block title %} {{ activite.title }}
+{% endblock title %} {% block content %}
+<div class="container">
+  <div class="section">
+    <h1>{{ activite.title }}</h1>
+
+    {{ activite.description }}
+
+    <img src="{{activite.photo.url }}" />
+
+    {% if activite.description %}
+    <h5>Ingredients :</h5>
+     {{ activite.description }}
+    {% endif %} 
+    <small>{{ recipe.pub_date }} </small>
+  </div>
+</div>
+
+{% endblock content %}
