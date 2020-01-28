@@ -1,25 +1,40 @@
-{% extends "index.html" %} {% block title %} {{ recipe.title }}
-{% endblock title %} {% block content %}
+{% extends "index.html" %} {% block title %} {{ recipe.title }} {% endblock %}
+{% block content %}
 <div class="container">
   <div class="section">
-    <h1>{{ recipe.title }}</h1>
+    <div class="row center">
+      <h1>{{ recipe.title }}</h1>
+    </div>
 
-    {{ recipe.description }}
+    <div class="row center">
+      <img
+        src="{{ recipe.photo.url }}"
+        width="650"
+        class="materialboxed"
+        data-caption="{{ recipe.description }}"
+      />
+    </div>
 
-    <img src="{{ recipe.photo.url }}" />
+    <div class="row">
+      {% if ingredients %}
+      <h5>Ingredients :</h5>
+      <ul>
+        <li>{{ ingredients }}</li>
+      </ul>
+      {% endif %}
+    </div>
 
-    {% if ingredients %}
-    <h5>Ingredients :</h5>
-    <ul>
-      <li>{{ ingredients }}</li>
-    </ul>
-    {% endif %} {% if preparation %}
-    <h5>Directions :</h5>
-    <ul>
-      <li>{{ preparation }}</li>
-    </ul>
-    {% endif %}
-    <small>{{ recipe.pub_date }} </small>
+    <div class="row">
+      {% if preparation %}
+      <h5>Directions :</h5>
+      <ul>
+        <li>{{ preparation }}</li>
+      </ul>
+      {% endif %}
+
+      <small>{{ recipe.pub_date }} </small>
+    </div>
+    <br />
   </div>
 </div>
 

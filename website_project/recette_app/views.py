@@ -1,5 +1,10 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse
+from django.core.mail import send_mail
+from sendgrid import SendGridAPIClient
+from sendgrid.helpers.mail import Mail
+import os
+
 from .models import Recette, Travail_manuel, Activite
 
 def index(request):
@@ -7,6 +12,37 @@ def index(request):
 
 def apropos(request):
     return render(request, 'recette_app/apropos.html')
+
+def contact(request):
+    return render(request, 'recette_app/contact.html')
+
+def reponse(request):
+    message_old = request.POST.get('message', '')
+    from_email = request.POST.get('from_email', '')
+    
+    # send_mail(
+    #     '[From LAMSA website]',
+    #     f'{ message }',
+    #     f'{ from_email }',
+    #     ['sim4n6@gmail.com'],
+    # fail_silently=False,
+    # )    
+
+    message = Mail(
+        from_email=from_email,
+        to_emails='giqeppappah-7503@yopmail.com',
+        subject='Sending with Twilio SendGrid is Fun',
+        html_content='<strong>and easy to do anywhere, even with Python</strong>')
+    try:
+        sg = SendGridAPIClient(os.environ.get('SENDGRID_API_KEY'))
+        response = sg.send(message)
+        print(response.status_code)
+        print(response.body)
+        print(response.headers)
+    except Exception as e:
+        print("--->", str(e))
+
+    return render(request, 'recette_app/reponse.html')
 
 def home(request):
     latest_recipes = Recette.objects.order_by('-pub_date')[:3]

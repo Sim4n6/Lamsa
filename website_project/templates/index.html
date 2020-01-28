@@ -53,8 +53,7 @@
         <div class="col l3 s12">
           <h5 class="white-text">Connect</h5>
           <ul>
-            <li><a class="white-text" href="#!">Link 1</a></li>
-            <li><a class="white-text" href="#!">Link 2</a></li>
+            <li><i class="material-icons">email</i><a class="white-text" href="{% url 'contact' %}">Contact</a></li>
             <li><i class="material-icons">people</i><a class="white-text" target="_blank" href="https://www.facebook.com/lamsaassociationouezzane">Facebook</a></li>
             <li><i class="material-icons">verified_user</i><a class="white-text" target="_blank" href="{% url 'admin' %}">Admin</a></li>
           </ul>
@@ -73,6 +72,36 @@
   <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
   <script src="{% static 'js/materialize.js' %}"></script>
   <script src="{% static 'js/init.js' %}"></script>
+  <script>
+    var options={
+        indicators:true,
+        inDuration:1000,
+        height:700,
+        outDuration:1000,
+        duration:500,
+        onOpenStart:function(){
+          interval:500
+            console.log("onOpenStart");
+
+        },
+        onOpenEnd:function(){
+            console.log("onOpenEnd");
+        },
+        onCloseStart:function(){
+            console.log("onCloseStart");
+        },
+        onCloseEnd:function(){
+            console.log("onCloseEnd");
+        }
+    };
+
+    document.addEventListener('DOMContentLoaded', function() {        
+        var elems = document.querySelectorAll('.materialboxed');
+        var instances = M.Materialbox.init(elems, options);
+    });
+
+    //M.AutoInit();
+</script>
 
   </body>
 </html>
