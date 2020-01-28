@@ -5,6 +5,9 @@ from .models import Recette, Travail_manuel, Activite
 def index(request):
     return redirect("home")
 
+def apropos(request):
+    return render(request, 'recette_app/apropos.html')
+
 def home(request):
     latest_recipes = Recette.objects.order_by('-pub_date')[:4]
     latest_travail_manuel = Travail_manuel.objects.order_by('-pub_date')[:4]
