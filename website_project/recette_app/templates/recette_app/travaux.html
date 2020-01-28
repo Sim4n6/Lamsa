@@ -21,13 +21,14 @@
     <!--   Icon Section   -->
 
     <div class="row">
-      <h5 class="left header blue-text">Derniers travaux manuels :</h5>
+      <h5 class="left header blue-text">Dernièrs travaux manuels :</h5>
     </div>
     <div class="row">
       {% if travaux %}
       
       {% for travail_manuel in travaux %}
-      <div class="col s12 m4">
+       
+      <div class="col s12 m3">
         <div class="icon-block">
           <h2 class="center light-blue-text"><i class="material-icons">brush</i></h2>
           <h5 class="center"><a href="{% url 'detail_travail_manuel' travail_manuel.id %}">{{ travail_manuel.title }}</a></h5>

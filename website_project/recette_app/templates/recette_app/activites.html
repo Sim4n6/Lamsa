@@ -20,13 +20,13 @@
 
     <!--   Icon Section   -->
     <div class="row">
-      <h5 class="left header blue-text">Dernieres activités :</h5>
+      <h5 class="left header blue-text">Dernières activités :</h5>
     </div>
     <div class="row">
       {% if activites %}
       
       {% for activite in activites %}
-      <div class="col s12 m4">
+      <div class="col s12 m3">
         <div class="icon-block">
           <h2 class="center light-blue-text"><i class="material-icons">brush</i></h2>
           <h5 class="center"><a href="{% url 'detail_activite' activite.id %}">{{ activite.title }}</a></h5>

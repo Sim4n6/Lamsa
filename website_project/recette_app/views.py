@@ -9,9 +9,9 @@ def apropos(request):
     return render(request, 'recette_app/apropos.html')
 
 def home(request):
-    latest_recipes = Recette.objects.order_by('-pub_date')[:4]
-    latest_travail_manuel = Travail_manuel.objects.order_by('-pub_date')[:4]
-    latest_activite = Activite.objects.order_by('-pub_date')[:4]
+    latest_recipes = Recette.objects.order_by('-pub_date')[:3]
+    latest_travail_manuel = Travail_manuel.objects.order_by('-pub_date')[:3]
+    latest_activite = Activite.objects.order_by('-pub_date')[:3]
     context = {'latest_recipes': latest_recipes, "latest_travail_manuel": latest_travail_manuel, "latest_activite":latest_activite}
     return render(request, 'recette_app/home.html', context)
 

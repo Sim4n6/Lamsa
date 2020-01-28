@@ -24,7 +24,7 @@
       {% if recipes %}
       
         {% for recipe in recipes %}
-        <div class="col s12 m4">
+        <div class="col s12 m3">
           <div class="icon-block">
             <h2 class="center light-blue-text"><i class="material-icons">restaurant_menu</i></h2>
             <h5 class="center"><a href="{% url 'detail' recipe.id %}">{{ recipe.title }}</a></h5>
