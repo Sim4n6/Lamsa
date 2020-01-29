@@ -45,25 +45,25 @@ def reponse(request):
     return render(request, 'recette_app/reponse.html')
 
 def home(request):
-    latest_recipes = Recette.objects.order_by('-pub_date')[:3]
-    latest_travail_manuel = Travail_manuel.objects.order_by('-pub_date')[:3]
-    latest_activite = Activite.objects.order_by('-pub_date')[:3]
+    latest_recipes = Recette.objects.latest('pub_date')
+    latest_travail_manuel = Travail_manuel.objects.latest('pub_date')
+    latest_activite = Activite.objects.latest('pub_date')
     context = {'latest_recipes': latest_recipes, "latest_travail_manuel": latest_travail_manuel, "latest_activite":latest_activite}
     return render(request, 'recette_app/home.html', context)
 
 
 def recipes(request):
-    recipes = Recette.objects.order_by('-pub_date')
+    recipes = Recette.objects.latest('pub_date')
     context = {'recipes': recipes}
     return render(request, 'recette_app/recipes.html', context)
 
 def activites(request):
-    activites = Activite.objects.order_by('-pub_date')
+    activites = Activite.objects.latest('pub_date')
     context = {'activites': activites}
     return render(request, 'recette_app/activites.html', context)
 
 def travaux(request):
-    travaux = Travail_manuel.objects.order_by('-pub_date')
+    travaux = Travail_manuel.objects.latest('pub_date')
     context = {'travaux': travaux}
     return render(request, 'recette_app/travaux.html', context)
 
