@@ -1,1 +1,1 @@
-web: gunicorn website_project.website.wsgi.application --log-file -
+web: gunicorn --chdir ./website_project/ website.wsgi:application --log-file -
