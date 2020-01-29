@@ -17,9 +17,7 @@ from dotenv import load_dotenv
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 dotenv_path = os.path.join(BASE_DIR, ".env")
-print("-----------------------------------+++++++++"+dotenv_path)
 load_dotenv(verbose=True, dotenv_path=dotenv_path)
-print(os.getenv("DB_USER"))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
@@ -30,7 +28,7 @@ SECRET_KEY = os.getenv("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True #if not os.getenv("IS_PRODUCTION") else False
 
-ALLOWED_HOSTS = ['lamsa.herokuapp.com']
+ALLOWED_HOSTS = []
 
 
 # Application definition
