@@ -25,7 +25,7 @@ SECRET_KEY = os.getenv("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['lamsa.herokuapp.com']
 
 
 # Application definition
@@ -48,6 +48,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
     # Simplified static file serving.
     # https://warehouse.python.org/project/whitenoise/
     'whitenoise.middleware.WhiteNoiseMiddleware',
@@ -143,4 +144,10 @@ MEDIA_URL = "/media/"
 
 
 from dotenv import load_dotenv
-load_dotenv(verbose=True)
+load_dotenv(verbose=False)
+
+# CSRF
+CSRF_COOKIE_SECURE = True
+
+# SECURITY 
+SESSION_COOKIE_SECURE = True
