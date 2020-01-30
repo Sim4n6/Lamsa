@@ -26,7 +26,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = os.getenv("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False #if not os.getenv("IS_PRODUCTION") else False
+DEBUG = True #if not os.getenv("IS_PRODUCTION") else False
 
 ALLOWED_HOSTS = ['lamsa.herokuapp.com']
 
@@ -34,6 +34,7 @@ ALLOWED_HOSTS = ['lamsa.herokuapp.com']
 # Application definition
 
 INSTALLED_APPS = [
+    # my app
     'recette_app.apps.ContentRecipesConfig',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -87,7 +88,7 @@ DATABASES = {
       #  'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     #},
     'default' : {
-        'ENGINE': 'django.db.backends.postgresql',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': os.getenv("DATABASE"),
         'HOST': os.getenv("HOST"),
         'USER': os.getenv("DB_USER"),
