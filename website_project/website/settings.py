@@ -28,7 +28,7 @@ SECRET_KEY = os.getenv("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True #if not os.getenv("IS_PRODUCTION") else False
 
-ALLOWED_HOSTS = ['lamsa.herokuapp.com']
+ALLOWED_HOSTS = ['127.0.0.1','lamsa.herokuapp.com']
 
 
 # Application definition

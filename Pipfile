@@ -13,6 +13,7 @@ sendgrid = "*"
 python-dotenv = "*"
 gunicorn = "*"
 whitenoise = "*"
+django-heroku = "*"
 
 [requires]
 python_version = "3.8.1"
