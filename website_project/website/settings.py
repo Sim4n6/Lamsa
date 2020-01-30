@@ -26,7 +26,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = os.getenv("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True #if not os.getenv("IS_PRODUCTION") else False
+DEBUG = False #if not os.getenv("IS_PRODUCTION") else False
 
 ALLOWED_HOSTS = ['lamsa.herokuapp.com']
 
