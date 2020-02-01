@@ -10,10 +10,10 @@ django = "*"
 psycopg2 = "*"
 pillow = "*"
 sendgrid = "*"
-python-dotenv = "*"
 gunicorn = "*"
 whitenoise = "*"
 django-heroku = "*"
+django-environ = "*"
 
 [requires]
 python_version = "3.8.1"

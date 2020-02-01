@@ -11,8 +11,14 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
-import dj_database_url
-# from dotenv import load_dotenv
+import environ
+
+env = environ.Env(
+    # set casting, default value
+    DEBUG=(bool, False)
+)
+# reading .env file
+environ.Env.read_env()
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -23,17 +29,17 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.getenv("SECRET_KEY")
-
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True #if not os.getenv("IS_PRODUCTION") else False
+# False if not in os.environ
+DEBUG = env('DEBUG')
 
-ALLOWED_HOSTS = ['127.0.0.1','lamsa.herokuapp.com']
+# Raises django's ImproperlyConfigured exception if SECRET_KEY not in os.environ
+# SECURITY WARNING: keep the secret key used in production secret!
+SECRET_KEY = env.str('SECRET_KEY')
 
+ALLOWED_HOSTS = env.list('ALLOWED_HOSTS')
 
 # Application definition
-
 INSTALLED_APPS = [
     # my app
     'recette_app.apps.ContentRecipesConfig',
@@ -83,23 +89,27 @@ WSGI_APPLICATION = 'website.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
-DATABASES = {
-    #'default': {
-     #   'ENGINE': 'django.db.backends.sqlite3',
-      #  'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    #},
-    'default' : {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': os.getenv("DATABASE"),
-        'HOST': os.getenv("HOST"),
-        'USER': os.getenv("DB_USER"),
-        'PASSWORD': os.getenv("PASSWORD"),
-        'PORT': os.getenv("PORT"),
-    }
-}
+# DATABASES = {
+#     #'default': {
+#      #   'ENGINE': 'django.db.backends.sqlite3',
+#       #  'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#     #},
+#     'default' : {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': os.getenv("DATABASE"),
+#         'HOST': os.getenv("HOST"),
+#         'USER': os.getenv("DB_USER"),
+#         'PASSWORD': os.getenv("PASSWORD"),
+#         'PORT': os.getenv("PORT"),
+#     }
+# }
 
-db_from_env = dj_database_url.config(conn_max_age=500)
-DATABASES['default'].update(db_from_env)
+# Parse database connection url strings like psql://user:pass@127.0.0.1:8458/db
+DATABASES = {
+    # read os.environ['DATABASE_URL'] and raises ImproperlyConfigured exception if not found
+    'default': env.db(),
+}
+DATABASES['default'].update({"CONN_MAX_AGE":500})
 
 
 # Password validation
@@ -148,14 +158,14 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-
-
 # Media files
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 MEDIA_URL = "/media/"
 
-# CSRF
-CSRF_COOKIE_SECURE = True
+# # CSRF
+# CSRF_COOKIE_SECURE = True
 
 # SECURITY 
-SESSION_COOKIE_SECURE = True
+#SESSION_COOKIE_SECURE = True
+
+#SESSION_COOKIE_DOMAIN = "127.0.0.1"
