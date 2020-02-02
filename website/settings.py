@@ -11,7 +11,10 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
+import django_heroku
 import environ
+
+
 
 env = environ.Env(
     # set casting, default value
@@ -159,8 +162,8 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Media files
-MEDIA_ROOT = os.path.join(BASE_DIR, "media/")
 MEDIA_URL = "/media/"
+MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
 # # CSRF
 # CSRF_COOKIE_SECURE = True
@@ -169,3 +172,9 @@ MEDIA_URL = "/media/"
 #SESSION_COOKIE_SECURE = True
 
 #SESSION_COOKIE_DOMAIN = "127.0.0.1"
+
+
+
+
+# Activate Django-Heroku at the bottom.
+django_heroku.settings(locals())
